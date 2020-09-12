@@ -9,5 +9,5 @@ def get_image_array(uuid):
     buffer = BytesIO(response.content)
     image = Image.open(buffer)
     data = image.getdata()
-    array = concatenate(data, axis=0)
+    array = concatenate(data, axis=0).tolist()
     return array
