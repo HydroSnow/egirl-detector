@@ -1,2 +1,3 @@
-model.jlb
-players.csv
+/__pycache__/
+/model.jlb
+/players.csv

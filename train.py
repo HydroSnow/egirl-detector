@@ -1,8 +1,5 @@
 from csv import reader
-from requests import get
-from PIL import Image
-from io import BytesIO
-from numpy import concatenate
+from common import get_image_array
 from math import floor
 from sklearn.neural_network import MLPClassifier
 from joblib import dump
@@ -15,11 +12,7 @@ with open('players.csv') as csvfile:
     for row in csv:
         name, uuid, gender = row
 
-        response = get(f'https://crafatar.com/avatars/{uuid}.png?size=8')
-        buffer = BytesIO(response.content)
-        image = Image.open(buffer)
-        data = image.getdata()
-        array = concatenate(data, axis=0)
+        array = get_image_array(uuid)
 
         in_rows.append(array)
         out_rows.append(gender)
